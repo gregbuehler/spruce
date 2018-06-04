@@ -1,0 +1,19 @@
+# trick to make travis use container runner instead of vm runner
+sudo: false
+
+language: go 
+go: 
+ - "1.x"
+ - "1.10.x"
+ 
+git:
+  depth: 1
+
+notifications:
+  email: false
+
+before_script:
+ - go vet ./...
+
+script:
+ - go test -v  -race ./...
